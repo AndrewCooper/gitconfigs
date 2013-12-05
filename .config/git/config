@@ -1,22 +1,31 @@
 [user]
 	name = Andrew Cooper
 	email = andrew.cooper@garmin.com
+[alias]
+	subup = submodule update --init --recursive
+[apply]
+	whitespace = error
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 	interactive = true
+	ui = true
+[commit]
+	template = ~/.config/git/commit_template
 [core]
-	autocrlf = input
 	editor = vim
-	excludesfile = ~/.gitignore_global
 	filemode = false
 	symlinks = false
+	#whitespace = blank-at-eol,space-before-tab,tab-in-indent,blank-at-eof,trailing-space,cr-at-eol
+	autocrlf = input
 [diff]
 	tool = kdiff3
+	guitool = kdiff3
 [gui]
 	commitmsgwidth = 80
 	encoding = utf-8
+	spellingdictionary = en_US-w-accents
 [guitool "Difftool"]
 	cmd = git difftool --no-prompt -- $FILENAME
 	noconsole = true
@@ -29,3 +38,33 @@
 	format = web
 [merge]
 	tool = kdiff3
+[url "ssh://gerrit.consumer.garmin.com:29418/"]
+	insteadOf = consumer://
+[url "ssh://gerrit.marine.garmin.com:29418/"]
+	insteadOf = marine://
+[url "ssh://gerrit.cartography.garmin.com:29418/"]
+	insteadOf = cartography://
+[url "ssh://ola-ckr5hs1.ad.garmin.com:29418/"]
+	insteadof = lgerrit://
+[url "ssh://10.30.49.103:29418/"]
+	insteadof = speech-gerrit://
+[mergetool "kdiff3"]
+	path = C:/Program Files (x86)/KDiff3/kdiff3.exe
+[difftool "kdiff3"]
+	path = C:/Program Files (x86)/KDiff3/kdiff3.exe
+[credential]
+	helper = !\"C:/Program Files (x86)/GitExtensions/GitCredentialWinStore/git-credential-winstore.exe\"
+[http]
+	proxy = http://proxy.garmin.com:3128
+[rebase]
+	autosquash = true
+[guitool "Edit with Notepad++"]
+	cmd = "C:/Program\\ Files\\ \\(x86\\)/notepad++/notepad++.exe" -alwaysOnTop -multiInst -nosession "$FILENAME"
+	needsfile = yes
+    noconsole = yes
+[guitool "Edit .gitignore"]
+    cmd = "C:/Program\\ Files\\ \\(x86\\)/notepad++/notepad++.exe" -alwaysOnTop -multiInst -nosession .gitignore
+    needsfile = no
+    noconsole = yes
+[push]
+	default = simple
