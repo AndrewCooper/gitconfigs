@@ -1,0 +1,14 @@
+*
+!/.config
+!/.config/git
+!/.config/git/commit_template
+!/.config/git/config
+!/.config/git-review
+!/.config/git-review/git-review.conf
+!/.gitignore.d
+!/.gitignore.d/gitconfigs
+!/.gitk
+!/.local
+!/.local/share
+!/.local/share/git
+!/.local/share/git/git-prompt.sh
