@@ -4,7 +4,7 @@
 [alias]
     subup = submodule update --init --recursive
 [apply]
-    whitespace = error
+	whitespace = warn
 [color]
     diff = auto
     status = auto
@@ -21,12 +21,16 @@
     autocrlf = input
     eol = lf
 [diff]
-    tool = kdiff3
-    guitool = kdiff3
+	tool = bc3
+	guitool = kdiff3
+	renames = copies
 [gui]
     commitmsgwidth = 80
     encoding = utf-8
-    spellingdictionary = en_US-w-accents
+	spellingdictionary = en_US-w_accents
+	fontdiff = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"DejaVu Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	gcwarning = false
 [guitool "Difftool"]
     cmd = git difftool --no-prompt -- $FILENAME
     noconsole = true
@@ -37,8 +41,9 @@
     noconsole = true
 [help]
     format = web
+	browser = xdg-open
 [merge]
-    tool = kdiff3
+	tool = bc3
 [url "ssh://gerrit.consumer.garmin.com:29418/"]
     insteadOf = consumer://
 [url "ssh://gerrit.marine.garmin.com:29418/"]
@@ -49,23 +54,41 @@
     insteadof = lgerrit://
 [url "ssh://10.30.49.103:29418/"]
     insteadof = speech-gerrit://
-[mergetool "kdiff3"]
-    path = C:/Program Files (x86)/KDiff3/kdiff3.exe
-[difftool "kdiff3"]
-    path = C:/Program Files (x86)/KDiff3/kdiff3.exe
 [credential]
-    helper = !\"C:/Program Files (x86)/GitExtensions/GitCredentialWinStore/git-credential-winstore.exe\"
+    helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 [http]
-    proxy = http://proxy.garmin.com:3128
+	proxy = http://mombasa.garmin.com:9119/
 [rebase]
     autosquash = true
 [guitool "Edit with Notepad++"]
-    cmd = "C:/Program\\ Files\\ \\(x86\\)/notepad++/notepad++.exe" -alwaysOnTop -multiInst -nosession "$FILENAME"
+    cmd = gvim --nofork -p "$FILENAME"
     needsfile = yes
     noconsole = yes
 [guitool "Edit .gitignore"]
-    cmd = "C:/Program\\ Files\\ \\(x86\\)/notepad++/notepad++.exe" -alwaysOnTop -multiInst -nosession .gitignore
+    cmd = gvim --nofork -p .gitignore
     needsfile = no
     noconsole = yes
 [push]
     default = simple
+[grep]
+	lineNumber = true
+[guitool "Delete File"]
+	cmd = rm $FILENAME
+	noconsole = yes
+	needsfile = yes
+[gitreview]
+	remote = origin
+	reviewers = shaun.tierney@garmin.com ben.collins@garmin.com richard.vester@garmin.com
+[gerrit]
+[difftool "bc3"]
+	trustExitCode = true
+[mergetool "bc3"]
+	trustExitCode = true
+[stgit]
+	autokeep = yes
+[mergetool]
+	keepBackup = false
+[mergetool "mergebin"]
+	cmd = cp -v $REMOTE $MERGED
+    trustExitCode = yes
+
